@@ -17,10 +17,8 @@ def verify_date(fn):
 
 # Lectura archivos Excel
 # Input 
-path = 'C:/Users/Jose Ibanez/Datos/Solar/ORI/Obs/'
-# filename = 'GIZ METEO PPC F1 & F2 20220928.xls'
-filename = 'GIZ METEO PPC F1 & F2 20220924.xls'
-# filename = '20221009 - USF - Datos de Estaciones Meteorologicas - PPC.xlsx'
+path = 'E:/CPERv/DataExample'
+filename = 'GIZ METEO PPC F1 & F2 20221009.xls'
 # Process
 fn = path+'/'+filename
 skip_rows = verify_date(fn)

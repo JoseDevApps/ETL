@@ -5,4 +5,4 @@ ResumeData.csv
 temp_E.csv
 temp_T.csv
 df_info.txt
-
+logs/*

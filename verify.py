@@ -10,24 +10,19 @@ Port = '4000'
 User = 'postgres'
 Password = 'cperv_db_solar'
 DBName = 'cperv'
-TableName = ''
+TableName = 'data_oruro'
 # Process
+    # Connection to the DB
 engine = create_engine('postgresql://'+User+':'+Password+'@'+Host+':'+Port+'/'+DBName)
 connection = engine.connect()
-print(engine)
-metadata_obj = MetaData()
-table_name = 'data_oruro'
-census = Table('data_oruro', metadata_obj, autoload=True, autoload_with=engine)
-print(census.columns.keys())
-# result_q = [elem for elem in result]
-# print(result_q)
-# print(result)
-# for elem in result:
-#     print(elem)
-
-dr = pd.read_csv('./ResumeData.csv')
-df = pd.read_csv(fn,index_col=0, parse_dates=True)
-print(df.info())
-# print(df)
-pd.io.sql.get_schema(df, name = 'data_oruro',)
-df.head(0).to_sql(name='data_oruro', con=engine, if_exists='replace')
+    # Verify if exist the table
+try: 
+    metadata_obj = MetaData()
+    table_db = Table(TableName, metadata_obj, autoload=True, autoload_with=engine)
+    print(table_db.columns.keys())
+except:
+    df = pd.read_csv(fn,index_col=0, parse_dates=True)
+    print(df.info())
+    # print(df)
+    pd.io.sql.get_schema(df, name = 'data_oruro',)
+    df.head(0).to_sql(name='data_oruro', con=engine, if_exists='replace')

@@ -21,6 +21,5 @@ print(df.info())
 # print(df)
 pd.io.sql.get_schema(df, name = 'data_oruro', con=engine, )
 print(df.columns)
-# df.head(0).to_sql(name='data_oruro', con=engine, if_exists='replace')
 # Output
-df.to_sql(name='data_oruro', con=engine, if_exists='append', index=False)
+df.to_sql(name='data_oruro', con=engine, if_exists='append')
