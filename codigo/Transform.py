@@ -10,7 +10,7 @@ def datetime_valid(dt_str):
     return False
 
 # Input
-path = './'
+path = '/opt/airflow/tmp'
 filename = 'temp_E.csv'
 date_format = '%d/%m/%Y %H:%M:%S'
 # Process
@@ -23,7 +23,7 @@ NoNaN = len(inds)
 NoData = df.shape[0]
 # Numero de campos
 NoFields = df.shape[1]
-df.iloc[inds].to_csv('null_data.csv')
+df.iloc[inds].to_csv('/opt/airflow/tmp/null_data.csv')
 # delete null data
 df.dropna(inplace=True)
 # verificar cuantos datos son isodatetime
@@ -32,7 +32,7 @@ mask = [datetime_valid(a) for a in df.index]
 df.iloc[mask].index = pd.to_datetime(df.iloc[mask].index, format=date_format)
 print(df.iloc[mask].index)
 # Output
-df.to_csv('temp_T.csv')
+df.to_csv('/opt/airflow/tmp/temp_T.csv')
 # report null data in transform
 print(df.index[0])
 df_r = pd.Series({
@@ -41,4 +41,4 @@ df_r = pd.Series({
     'NoData':np.array(NoData),
     'NoCampos': np.array(NoFields)
 })
-df_r.to_csv('ResumeData.csv')
+df_r.to_csv('/opt/airflow/tmp/ResumeData.csv')

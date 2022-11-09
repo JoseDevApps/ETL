@@ -14,10 +14,9 @@ def verify_date(fn):
         return saltos
     saltos=0
     return saltos
-
 # Lectura archivos Excel
 # Input 
-path = '/opt/airflow/tmp'
+path = '/opt/data_'
 filename = 'GIZ METEO PPC F1 & F2 20221009.xls'
 # Process
 fn = path+'/'+filename
@@ -28,6 +27,5 @@ df.info(buf=buffer)
 s = buffer.getvalue()
 with open("df_info.txt", "w", encoding="utf-8") as f:
     f.write(s)
-
 # Output
 df.to_csv('/opt/airflow/tmp/temp_E.csv',index=False)

@@ -65,6 +65,7 @@ x-airflow-common:
     - ./plugins:/opt/airflow/plugins
     - ./codigo:/opt/airflow/codigo
     - ./tmp:/opt/airflow/tmp
+    - ./data_excel:/opt/data_
   user: "${AIRFLOW_UID:-50000}:50000"
   depends_on:
     &airflow-common-depends-on

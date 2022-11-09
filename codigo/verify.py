@@ -2,11 +2,11 @@ import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine, MetaData, Table
 # input
-path = './'
+path = '/opt/airflow/tmp'
 filename = 'temp_T.csv'
 fn = path + '/' + filename
-Host = 'localhost'
-Port = '4000'
+Host = 'db'
+Port = '5432'
 User = 'postgres'
 Password = 'cperv_db_solar'
 DBName = 'cperv'

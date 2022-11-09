@@ -2,11 +2,11 @@ import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
 # input
-path = './'
+path = '/opt/airflow/tmp'
 filename = 'temp_T.csv'
 fn = path + '/' + filename
-Host = 'localhost'
-Port = '4000'
+Host = 'db'
+Port = '5432'
 User = 'postgres'
 Password = 'cperv_db_solar'
 DBName = 'cperv'
@@ -15,7 +15,7 @@ TableName = ''
 engine = create_engine('postgresql://'+User+':'+Password+'@'+Host+':'+Port+'/'+DBName)
 engine.connect()
 print(engine)
-dr = pd.read_csv('./ResumeData.csv')
+dr = pd.read_csv('/opt/airflow/tmp/ResumeData.csv')
 df = pd.read_csv(fn,index_col=0, parse_dates=True)
 print(df.info())
 # print(df)
